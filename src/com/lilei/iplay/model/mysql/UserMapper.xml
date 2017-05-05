@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.lilei.iplay.model.User">
+
+    <resultMap type="User" id="userMap">
+        <id column="id" property="id"/>
+        <result column="password" property="password"/>
+        <result column="email" property="email"/>
+        <result column="head_pic_url" property="headPicUrl"/>
+        <result column="nick_name" property="nickName"/>
+        <result column="phone_number" property="phoneNumber"/>
+    </resultMap>
+
+</mapper>
