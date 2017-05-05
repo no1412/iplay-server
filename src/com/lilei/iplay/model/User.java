@@ -1,6 +1,7 @@
 package com.lilei.iplay.model;
 
 import com.lilei.iplay.common.Constants;
+import com.lilei.iplay.util.PropertyUtil;
 
 public class User {
 
@@ -30,7 +31,7 @@ public class User {
         this.email = email;
     }
     public String getHeadPicUrl() {
-        return Constants.PROJECT_PREFIX + headPicUrl;
+        return PropertyUtil.getProjectUrl() + headPicUrl;
     }
     public void setHeadPicUrl(String headPicUrl) {
         this.headPicUrl = headPicUrl;

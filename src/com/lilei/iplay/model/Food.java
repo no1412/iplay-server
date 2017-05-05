@@ -4,7 +4,7 @@ package com.lilei.iplay.model;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import com.lilei.iplay.common.Constants;
+import com.lilei.iplay.util.PropertyUtil;
 
 /**
  * Created by ll on 2017/5/2.
@@ -43,7 +43,7 @@ public class Food {
         this.publishTime = publishTime;
     }
     public String getFoodSurface() {
-        return Constants.PROJECT_PREFIX + foodSurface;
+        return PropertyUtil.getProjectUrl() + foodSurface;
     }
     public void setFoodSurface(String foodSurface) {
         this.foodSurface = foodSurface;
@@ -53,7 +53,7 @@ public class Food {
         String time = sdf.format(getPublishTime());
         return time.substring(0, time.length());
     }
-    public void setTime(String sendTime) {
+    public void setSendTime(String sendTime) {
         this.sendTime = sendTime;
     }
 }

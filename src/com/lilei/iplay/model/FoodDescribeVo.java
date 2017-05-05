@@ -1,5 +1,7 @@
 package com.lilei.iplay.model;
 
+import com.lilei.iplay.util.PropertyUtil;
+
 public class FoodDescribeVo extends Food {
 
     private String nickName;
@@ -12,7 +14,7 @@ public class FoodDescribeVo extends Food {
         this.nickName = nickName;
     }
     public String getHeadPicUrl() {
-        return headPicUrl;
+        return PropertyUtil.getProjectUrl() + headPicUrl;
     }
     public void setHeadPicUrl(String headPicUrl) {
         this.headPicUrl = headPicUrl;
