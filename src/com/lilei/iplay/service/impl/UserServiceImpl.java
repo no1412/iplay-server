@@ -34,5 +34,10 @@ public class UserServiceImpl implements UserService {
     public int saveUserInfors(User user) {
         return userDao.saveUserInfo(user);
     }
-    
+
+    @Override
+    public User verifyUserLogin(User user) {
+        return userDao.getUserByPhoneNumerPassword(user.getPhoneNumber(), user.getPassword());
+    }
+
 }

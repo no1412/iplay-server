@@ -4,6 +4,8 @@ package com.lilei.iplay.model;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.apache.commons.lang.StringUtils;
+
 import com.lilei.iplay.util.PropertyUtil;
 
 /**
@@ -43,7 +45,11 @@ public class Food {
         this.publishTime = publishTime;
     }
     public String getFoodSurface() {
-        return PropertyUtil.getProjectUrl() + foodSurface;
+        if (StringUtils.isEmpty(foodSurface)) {
+            return foodSurface;
+        } else {
+            return PropertyUtil.getProjectUrl() + foodSurface;
+        }
     }
     public void setFoodSurface(String foodSurface) {
         this.foodSurface = foodSurface;

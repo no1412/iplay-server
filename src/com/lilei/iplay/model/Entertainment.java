@@ -4,6 +4,8 @@ package com.lilei.iplay.model;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.apache.commons.lang.StringUtils;
+
 import com.lilei.iplay.util.PropertyUtil;
 
 /**
@@ -31,7 +33,11 @@ public class Entertainment {
         this.title = title;
     }
     public String getEntertainmentSurface() {
-        return PropertyUtil.getProjectUrl() + entertainmentSurface;
+        if (StringUtils.isEmpty(entertainmentSurface)) {
+            return entertainmentSurface;
+        } else {
+            return PropertyUtil.getProjectUrl() + entertainmentSurface;
+        }
     }
     public void setEntertainmentSurface(String entertainmentSurface) {
         this.entertainmentSurface = entertainmentSurface;
