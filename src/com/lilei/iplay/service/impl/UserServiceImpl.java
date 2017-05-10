@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.lilei.iplay.dao.UserDao;
+import com.lilei.iplay.model.User;
 import com.lilei.iplay.service.UserService;
 
 @Service
@@ -25,9 +26,13 @@ public class UserServiceImpl implements UserService {
             } else {
                 return false;
             }
-            
         }
         return false;
+    }
+
+    @Override
+    public int saveUserInfors(User user) {
+        return userDao.saveUserInfo(user);
     }
     
 }

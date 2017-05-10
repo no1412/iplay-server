@@ -1,5 +1,7 @@
 package com.lilei.iplay.model;
 
+import org.apache.commons.lang.StringUtils;
+
 import com.lilei.iplay.common.Constants;
 import com.lilei.iplay.util.PropertyUtil;
 
@@ -12,6 +14,17 @@ public class User {
     private String nickName;
     private String phoneNumber;
 
+    public User() {}
+
+    public User(String password, String email, String headPicUrl,
+            String nickName, String phoneNumber) {
+        super();
+        this.password = password;
+        this.email = email;
+        this.headPicUrl = headPicUrl;
+        this.nickName = nickName;
+        this.phoneNumber = phoneNumber;
+    }
     public int getId() {
         return id;
     }
@@ -31,7 +44,11 @@ public class User {
         this.email = email;
     }
     public String getHeadPicUrl() {
-        return PropertyUtil.getProjectUrl() + headPicUrl;
+        if (StringUtils.isEmpty(headPicUrl)) {
+            return headPicUrl;
+        } else {
+            return PropertyUtil.getProjectUrl() + headPicUrl;
+        }
     }
     public void setHeadPicUrl(String headPicUrl) {
         this.headPicUrl = headPicUrl;

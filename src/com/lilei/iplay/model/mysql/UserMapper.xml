@@ -20,4 +20,28 @@
                 user
         ]]>
     </select>
+
+    <insert id="saveUserInfo" parameterType="map" useGeneratedKeys="true" keyProperty="user.id">
+        <![CDATA[
+            INSERT
+            INTO
+                user
+                (
+                    nick_name,
+                    password,
+                    email,
+                    head_pic_url,
+                    phone_number
+                )
+            VALUES
+            (
+                #{user.nickName},
+                #{user.password},
+                #{user.email},
+                #{user.headPicUrl},
+                #{user.phoneNumber}
+            )
+        ]]>
+    </insert>
 </mapper>
+

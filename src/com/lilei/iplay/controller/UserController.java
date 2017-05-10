@@ -1,5 +1,7 @@
 package com.lilei.iplay.controller;
 
+import java.io.UnsupportedEncodingException;
+
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,12 +14,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.lilei.iplay.common.Constants;
 import com.lilei.iplay.model.User;
 import com.lilei.iplay.service.UserService;
+import com.lilei.iplay.util.EncodingUtil;
 
 @Controller
 @RequestMapping(Constants.APP_URL_USER_PREFIX)
 public class UserController {
 
     private Logger log = Logger.getLogger(UserController.class);
+    private static final String PHONE_NUMBER_EXIST_ERROR_CODE = "10";
 
     @Autowired
     private UserService userService;
@@ -48,11 +52,12 @@ public class UserController {
             @RequestParam(value = "appKey", defaultValue = "") String appKey
             ) {
         if (!appKey.equals(Constants.APP_KEY)) {
-            return Constants.FAILURE;
+            return PHONE_NUMBER_EXIST_ERROR_CODE;
         }
-        User user = new User();
-        boolean flag = userService.verifyPhoneNumberIsExist(phoneNumber);
-        if (flag) {
+        nickName = EncodingUtil.getEncodingString(nickName);
+        User user = new User(password, "", "", nickName, phoneNumber);
+        int userId = userService.saveUserInfors(user);
+        if (userId != 0) {
             return Constants.SUCCESS;
         } else {
             return Constants.FAILURE;
