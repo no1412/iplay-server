@@ -1,5 +1,7 @@
 package com.lilei.iplay.service.impl;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.lilei.iplay.dao.UserDao;
@@ -12,6 +14,20 @@ public class UserServiceImpl implements UserService {
 
     public void setUserDao(UserDao userDao) {
         this.userDao = userDao;
+    }
+
+    @Override
+    public boolean verifyPhoneNumberIsExist(String phoneNumber) {
+        List<String> userPhoneNumbers = userDao.findUserPhoneNumber();
+        if (userPhoneNumbers != null) {
+            if (userPhoneNumbers.contains(phoneNumber)) {
+                return true;
+            } else {
+                return false;
+            }
+            
+        }
+        return false;
     }
     
 }

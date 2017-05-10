@@ -12,4 +12,12 @@
         <result column="phone_number" property="phoneNumber"/>
     </resultMap>
 
+    <select id="findUserPhoneNumber" resultType="String">
+        <![CDATA[
+            SELECT
+                phone_number
+            FROM
+                user
+        ]]>
+    </select>
 </mapper>
