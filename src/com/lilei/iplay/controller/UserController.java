@@ -1,7 +1,5 @@
 package com.lilei.iplay.controller;
 
-import java.io.UnsupportedEncodingException;
-
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,9 +56,37 @@ public class UserController {
         User user = new User(password, "", "", nickName, phoneNumber);
         int userId = userService.saveUserInfors(user);
         if (userId != 0) {
+            log.info(nickName + " 注册成功");
             return Constants.SUCCESS;
         } else {
+            log.info(nickName + " 注册失败");
             return Constants.FAILURE;
+        }
+    }
+
+    @RequestMapping(value = "/verifyUserLogin", method = RequestMethod.POST)
+    @ResponseBody
+    private User verifyUserLogin(
+            @RequestParam(value = "phoneNumber", defaultValue = "") String phoneNumber,
+            @RequestParam(value = "password", defaultValue = "") String password,
+            @RequestParam(value = "appKey", defaultValue = "") String appKey
+            ) {
+        if (!appKey.equals(Constants.APP_KEY)) {
+            return null;
+        }
+        User user = new User();
+        user.setPhoneNumber(phoneNumber);
+        user.setPassword(password);
+        user = userService.verifyUserLogin(user);
+        if (user != null) {
+            user.setResponseCode(Constants.SUCCESS);
+            log.info(user.getNickName() + " 登录成功");
+            return user;
+        } else {
+            user = new User();
+            user.setResponseCode(Constants.FAILURE);
+            log.info("手机号或者密码不正确");
+            return user;
         }
     }
 }

@@ -32,7 +32,10 @@ public class UserDaoImpl extends SqlSessionDaoSupport implements UserDao {
 
     @Override
     public User getUserByPhoneNumerPassword(String phoneNumber, String password) {
-        return getSqlSession().selectOne(CLASS_NAME + SQL_ID_GET_USER_BY_PHONE_NUMBER_password);
+        Map<String, Object> params = new HashMap<String, Object>();
+        params.put("phoneNumber", phoneNumber);
+        params.put("password", password);
+        return getSqlSession().selectOne(CLASS_NAME + SQL_ID_GET_USER_BY_PHONE_NUMBER_password, params);
     }
 
 }

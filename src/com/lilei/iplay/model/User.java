@@ -13,6 +13,7 @@ public class User {
     private String headPicUrl;
     private String nickName;
     private String phoneNumber;
+    private String responseCode;
 
     public User() {}
 
@@ -64,5 +65,13 @@ public class User {
     }
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public String getResponseCode() {
+        return responseCode;
+    }
+
+    public void setResponseCode(String responseCode) {
+        this.responseCode = responseCode;
     }
 }

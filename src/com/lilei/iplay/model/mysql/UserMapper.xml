@@ -43,5 +43,23 @@
             )
         ]]>
     </insert>
+
+    <select id="getUserByPhoneNumerPassword" parameterType="map" resultMap="userMap">
+        <![CDATA[
+            SELECT
+                id,
+                nick_name,
+                password,
+                email,
+                head_pic_url,
+                phone_number
+            FROM
+                user
+            WHERE
+                phone_number = #{phoneNumber}
+                AND
+                password = #{password}
+        ]]>
+    </select>
 </mapper>
 
