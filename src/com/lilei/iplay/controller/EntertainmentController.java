@@ -14,7 +14,6 @@ import com.lilei.iplay.exception.ParameterException;
 import com.lilei.iplay.exception.ServiceException;
 import com.lilei.iplay.model.EntertainmentDescribeVo;
 import com.lilei.iplay.service.EntertainmentService;
-import com.lilei.iplay.service.FoodService;
 
 @Controller
 @RequestMapping(Constants.APP_URL_ENTERTAINMENT_PREFIX)

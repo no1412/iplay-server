@@ -1,7 +1,8 @@
 package com.lilei.iplay.entity;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
+
+import com.lilei.iplay.controller.EntertainmentController;
 
 /**
  * json返回数据类型. <br/>
@@ -10,7 +11,7 @@ import org.slf4j.LoggerFactory;
  * @author songjiesdnu@163.com
  */
 public class Result {
-	private static Logger logger = LoggerFactory.getLogger(Result.class);
+    private Logger log = Logger.getLogger(EntertainmentController.class);
 	public static final String SUCCESS = "success";
 	public static final String FAILED = "failed";
 	
@@ -24,7 +25,7 @@ public class Result {
 	}
 	public void setStatus(String status) {
 		if(status == null  ||  (!status.equals(SUCCESS) &&  !status.equals(FAILED))){
-			logger.error("status只允许以下值：" + SUCCESS + "、" + FAILED);
+			log.error("status只允许以下值：" + SUCCESS + "、" + FAILED);
 			throw new IllegalArgumentException("status只允许以下值：" + SUCCESS + "、" + FAILED);
 		}
 		this.status = status;
