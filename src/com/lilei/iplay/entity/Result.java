@@ -2,8 +2,6 @@ package com.lilei.iplay.entity;
 
 import org.apache.log4j.Logger;
 
-import com.lilei.iplay.controller.EntertainmentController;
-
 /**
  * json返回数据类型. <br/>
  * date: 2015年10月26日 上午9:34:50 <br/>
@@ -11,7 +9,7 @@ import com.lilei.iplay.controller.EntertainmentController;
  * @author songjiesdnu@163.com
  */
 public class Result {
-    private Logger log = Logger.getLogger(EntertainmentController.class);
+    private Logger log = Logger.getLogger(Result.class);
 	public static final String SUCCESS = "success";
 	public static final String FAILED = "failed";
 	

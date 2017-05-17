@@ -2,7 +2,7 @@ package com.lilei.iplay.model;
 
 import com.lilei.iplay.util.PropertyUtil;
 
-public class FoodDescribeVo extends Food {
+public class ContentDescribeVo extends Content {
 
     private String nickName;
     private String headPicUrl;

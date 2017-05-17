@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.lilei.iplay.model.Content">
+
+    <resultMap type="Content" id="contentMap">
+        <id column="id" property="id"/>
+        <result column="title" property="title"/>
+        <result column="surface" property="surface"/>
+        <result column="content" property="content"/>
+        <result column="city_code" property="cityCode"/>
+        <result column="publish_time" property="publishTime"/>
+    </resultMap>
+
+    <resultMap type="com.lilei.iplay.model.ContentDescribeVo" id="contentDescribeVoMap" extends="contentMap">
+        <result column="head_pic_url" property="headPicUrl"/>
+        <result column="nick_name" property="nickName"/>
+    </resultMap>
+
+    <select id="findContentDescribes" parameterType="com.lilei.iplay.model.Content" resultMap="contentDescribeVoMap">
+        SELECT
+            c.id,
+            c.title,
+            c.surface,
+            c.content,
+            c.publish_time,
+            u.head_pic_url,
+            u.nick_name
+        FROM
+            content c, user u
+        WHERE
+            c.user_id = u.id
+            <if test="typeId != 0">
+                AND
+                c.type_id = ${typeId}
+            </if>
+
+            <if test="cityCode != '' and cityCode != null">
+                AND
+                c.city_code = ${cityCode}
+            </if>
+        ORDER BY
+            c.publish_time DESC
+    </select>
+</mapper>

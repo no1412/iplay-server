@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.lilei.iplay.common.Constants;
-import com.lilei.iplay.entity.Result;
 import com.lilei.iplay.util.PropertyUtil;
 import com.lilei.iplay.util.StringUtil;
 

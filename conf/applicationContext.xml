@@ -50,19 +50,15 @@
     </bean>
 
     <bean id="userDao" class="com.lilei.iplay.dao.mybatis.UserDaoImpl" parent="baseDao"/>
-    <bean id="foodDao" class="com.lilei.iplay.dao.mybatis.FoodDaoImpl" parent="baseDao"/>
-    <bean id="entertainmentDao" class="com.lilei.iplay.dao.mybatis.EntertainmentDaoImpl" parent="baseDao"/>
+    <bean id="contentDao" class="com.lilei.iplay.dao.mybatis.ContentDaoImpl" parent="baseDao"/>
 
     <bean id="userService" class="com.lilei.iplay.service.impl.UserServiceImpl">
         <property name="userDao" ref="userDao"/>
     </bean>
-    <bean id="foodService" class="com.lilei.iplay.service.impl.FoodServiceImpl">
-        <property name="foodDao" ref="foodDao"/>
+    <bean id="contentService" class="com.lilei.iplay.service.impl.ContentServiceImpl">
+        <property name="contentDao" ref="contentDao"/>
     </bean>
-    <bean id="entertainmentService" class="com.lilei.iplay.service.impl.EntertainmentServiceImpl">
-        <property name="entertainmentDao" ref="entertainmentDao"/>
-    </bean>
-    
+
     <bean class="com.lilei.iplay.util.SpringUtil"/>
 
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">

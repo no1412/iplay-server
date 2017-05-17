@@ -24,6 +24,15 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    /**
+     * @Title: verifyPhoneNumberIsExist 
+     * @Description: TODO(验证手机号是否存在) 
+     * @param @param phoneNumber
+     * @param @param appKey
+     * @param @return    设定文件 
+     * @return String    返回类型 
+     * @throws
+     */
     @RequestMapping(value = "/verifyPhoneNumberIsExist", method = RequestMethod.GET)
     @ResponseBody
     private String verifyPhoneNumberIsExist(
@@ -41,6 +50,17 @@ public class UserController {
         }
     }
     
+    /**
+     * @Title: userRegister 
+     * @Description: TODO(用户注册) 
+     * @param @param phoneNumber
+     * @param @param nickName
+     * @param @param password
+     * @param @param appKey
+     * @param @return    设定文件 
+     * @return String    返回类型 
+     * @throws
+     */
     @RequestMapping(value = "/userRegister", method = RequestMethod.POST)
     @ResponseBody
     private String userRegister(
@@ -64,6 +84,16 @@ public class UserController {
         }
     }
 
+    /**
+     * @Title: verifyUserLogin 
+     * @Description: TODO(验证用户登录) 
+     * @param @param phoneNumber
+     * @param @param password
+     * @param @param appKey
+     * @param @return    设定文件 
+     * @return User    返回类型 
+     * @throws
+     */
     @RequestMapping(value = "/verifyUserLogin", method = RequestMethod.POST)
     @ResponseBody
     private User verifyUserLogin(
@@ -88,5 +118,23 @@ public class UserController {
             log.info("手机号或者密码不正确");
             return user;
         }
+    }
+    
+    @RequestMapping(value = "/publish", method = RequestMethod.POST)
+    @ResponseBody
+    private String publish(
+            @RequestParam(value = "type", defaultValue = "") int type,
+            @RequestParam(value = "userId", defaultValue = "") int userId,
+            @RequestParam(value = "uploadTitle", defaultValue = "") String uploadTitle,
+            @RequestParam(value = "uploadContent", defaultValue = "") String uploadContent,
+            @RequestParam(value = "uploadBg", defaultValue = "") String uploadBg,
+            @RequestParam(value = "appKey", defaultValue = "") String appKey
+            ) {
+        if (!appKey.equals(Constants.APP_KEY)) {
+            return null;
+        }
+        uploadTitle = EncodingUtil.getEncodingString(uploadTitle);
+        uploadContent = EncodingUtil.getEncodingString(uploadContent);
+        return null;
     }
 }
