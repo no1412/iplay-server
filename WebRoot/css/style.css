@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+html {
+  height: 100%;
+}
+img{
+ max-width: 90%;
+ height: auto;
+ 
+ clear: both; 
+ display: block; 
+ margin: auto; 
+}
+body {
+  overflow: scroll;
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+  min-height:100%;
+  font-family: 微软雅黑;
+  font-size: 40px;
+}

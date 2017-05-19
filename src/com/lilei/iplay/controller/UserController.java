@@ -1,5 +1,7 @@
 package com.lilei.iplay.controller;
 
+import java.util.Date;
+
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.lilei.iplay.common.Constants;
+import com.lilei.iplay.model.Content;
 import com.lilei.iplay.model.User;
 import com.lilei.iplay.service.UserService;
 import com.lilei.iplay.util.EncodingUtil;
@@ -119,22 +122,5 @@ public class UserController {
             return user;
         }
     }
-    
-    @RequestMapping(value = "/publish", method = RequestMethod.POST)
-    @ResponseBody
-    private String publish(
-            @RequestParam(value = "type", defaultValue = "") int type,
-            @RequestParam(value = "userId", defaultValue = "") int userId,
-            @RequestParam(value = "uploadTitle", defaultValue = "") String uploadTitle,
-            @RequestParam(value = "uploadContent", defaultValue = "") String uploadContent,
-            @RequestParam(value = "uploadBg", defaultValue = "") String uploadBg,
-            @RequestParam(value = "appKey", defaultValue = "") String appKey
-            ) {
-        if (!appKey.equals(Constants.APP_KEY)) {
-            return null;
-        }
-        uploadTitle = EncodingUtil.getEncodingString(uploadTitle);
-        uploadContent = EncodingUtil.getEncodingString(uploadContent);
-        return null;
-    }
+
 }

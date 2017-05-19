@@ -7,5 +7,9 @@ import com.lilei.iplay.model.ContentDescribeVo;
 
 public interface ContentDao {
 
-    public List<ContentDescribeVo> findContentDescribes(Content content); 
+    public List<ContentDescribeVo> findContentDescribes(Content content);
+
+    public int saveContent(Content content);
+
+    public ContentDescribeVo getContentDetail(int contentId);
 }

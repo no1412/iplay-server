@@ -5,9 +5,10 @@
 
     <resultMap type="Content" id="contentMap">
         <id column="id" property="id"/>
+        <result column="user_id" property="userId"/>
         <result column="title" property="title"/>
         <result column="surface" property="surface"/>
-        <result column="content" property="content"/>
+        <result column="content_detail" property="contentDetail"/>
         <result column="city_code" property="cityCode"/>
         <result column="publish_time" property="publishTime"/>
     </resultMap>
@@ -22,8 +23,9 @@
             c.id,
             c.title,
             c.surface,
-            c.content,
+            c.content_detail,
             c.publish_time,
+            c.user_id,
             u.head_pic_url,
             u.nick_name
         FROM
@@ -41,5 +43,50 @@
             </if>
         ORDER BY
             c.publish_time DESC
+    </select>
+
+    <insert id="saveContent" parameterType="com.lilei.iplay.model.Content" useGeneratedKeys="true" keyProperty="id">
+        <![CDATA[
+            INSERT
+            INTO
+                content
+                (
+                    title,
+                    surface,
+                    content_detail,
+                    publish_time,
+                    city_code,
+                    type_id,
+                    user_id
+                )
+            VALUES
+            (
+                #{title},
+                #{surface},
+                #{contentDetail},
+                #{publishTime},
+                #{cityCode},
+                #{typeId},
+                #{userId}
+            )
+        ]]>
+    </insert>
+
+    <select id="getContentDetail" parameterType="int" resultMap="contentDescribeVoMap">
+        SELECT
+            c.id,
+            c.title,
+            c.surface,
+            c.content_detail,
+            c.publish_time,
+            c.user_id,
+            u.head_pic_url,
+            u.nick_name
+        FROM
+            content c, user u
+        WHERE
+            c.user_id = u.id
+            AND 
+            c.id = ${value}
     </select>
 </mapper>

@@ -10,4 +10,8 @@ import com.lilei.iplay.model.ContentDescribeVo;
 public interface ContentService {
 
     public List<ContentDescribeVo> findContentDescribes(Content content) throws ParameterException, ServiceException;
+
+    public int saveContent(Content content) throws ParameterException, ServiceException;
+
+    public ContentDescribeVo getContentDetail(int contentId) throws ParameterException, ServiceException;
 }

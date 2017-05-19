@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+.content-title {
+    margin: 10px 10px;
+}
+
+.user-head-img {
+    width: 40px;
+    height: 40px;
+    margin-left: 10px;
+}
+
+.user-nick-name {
+    margin-left: 10px;
+}

@@ -24,6 +24,7 @@
     -->
     <mvc:annotation-driven />
     <mvc:resources location="/static/" mapping="/static/**"/>
+    <mvc:resources location="/css/" mapping="/css/**"/>
     <mvc:resources location="/upload/" mapping="/upload/**"/>
     <!-- To scan the package of base-package and register them.  -->
     <context:component-scan base-package="com.lilei.iplay.controller.**"/>
@@ -48,5 +49,5 @@
     <!-- 支持返回json -->
     
     <!-- The p represent the property -->
-    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver" p:prefix="/WEB-INF/jsp/" p:suffix=".jsp"></bean>
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver" p:prefix="/view/" p:suffix=".jsp"></bean>
 </beans>
