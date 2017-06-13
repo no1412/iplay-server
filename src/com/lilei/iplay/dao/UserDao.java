@@ -11,4 +11,8 @@ public interface UserDao {
     public int saveUserInfo(User user);
 
     public User getUserByPhoneNumerPassword(String phoneNumber, String password); 
+    
+    public int updateUserInfors(User user);
+    
+    public User getUserById(int id);
 }

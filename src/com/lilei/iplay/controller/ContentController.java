@@ -3,10 +3,6 @@ package com.lilei.iplay.controller;
 import java.util.Date;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,6 +18,7 @@ import com.lilei.iplay.exception.ParameterException;
 import com.lilei.iplay.exception.ServiceException;
 import com.lilei.iplay.model.Content;
 import com.lilei.iplay.model.ContentDescribeVo;
+import com.lilei.iplay.model.ContentVo;
 import com.lilei.iplay.service.ContentService;
 import com.lilei.iplay.util.EncodingUtil;
 
@@ -47,6 +44,27 @@ public class ContentController {
             content.setCityCode(cityCode);
             content.setTypeId(typeId);
             contentDescribes = contentService.findContentDescribes(content);
+        } catch (ParameterException e) {
+            log.error(e.getMessage());
+            e.printStackTrace();
+        } catch (ServiceException e) {
+            log.error(e.getMessage());
+            e.printStackTrace();
+        }
+        return contentDescribes;
+    }
+
+    @RequestMapping(value = "/searchContentDescribe", method = RequestMethod.POST)
+    @ResponseBody
+    private List<ContentDescribeVo> searchContentDescribe(
+            @RequestParam(value = "searchText", defaultValue = "") String searchText
+            ) {
+        List<ContentDescribeVo> contentDescribes = null;
+        try {
+            searchText = EncodingUtil.getEncodingString(searchText);
+            ContentVo contentVo = new ContentVo();
+            contentVo.setSearchText(searchText);
+            contentDescribes = contentService.searchContentDescribes(contentVo);
         } catch (ParameterException e) {
             log.error(e.getMessage());
             e.printStackTrace();

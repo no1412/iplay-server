@@ -4,10 +4,6 @@ package com.lilei.iplay.model;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import org.apache.commons.lang.StringUtils;
-
-import com.lilei.iplay.util.PropertyUtil;
-
 /**
  * Created by ll on 2017/5/2.
  */

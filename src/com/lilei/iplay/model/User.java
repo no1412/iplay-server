@@ -1,10 +1,5 @@
 package com.lilei.iplay.model;
 
-import org.apache.commons.lang.StringUtils;
-
-import com.lilei.iplay.common.Constants;
-import com.lilei.iplay.util.PropertyUtil;
-
 public class User {
 
     private int id;
@@ -45,11 +40,12 @@ public class User {
         this.email = email;
     }
     public String getHeadPicUrl() {
-        if (StringUtils.isEmpty(headPicUrl)) {
-            return headPicUrl;
-        } else {
-            return PropertyUtil.getProjectUrl() + headPicUrl;
-        }
+//        if (StringUtils.isEmpty(headPicUrl)) {
+//            return headPicUrl;
+//        } else {
+//            return PropertyUtil.getProjectUrl() + headPicUrl;
+//        }
+        return headPicUrl;
     }
     public void setHeadPicUrl(String headPicUrl) {
         this.headPicUrl = headPicUrl;

@@ -9,4 +9,6 @@ public interface UserService {
     public int saveUserInfors(User user);
 
     public User verifyUserLogin(User user);
+    
+    public User updateUserInfos(User user);
 }

@@ -61,5 +61,43 @@
                 password = #{password}
         ]]>
     </select>
+
+    <update id="updateUserInfors" parameterType="com.lilei.iplay.model.User">
+         UPDATE
+             User
+             <if test="nickName != '' and nickName != null">
+           SET
+               nick_name = #{nickName}
+             </if>
+             <if test="email != '' and email != null">
+                 SET
+                     email = #{email}
+             </if>
+             <if test="phoneNumber != '' and phoneNumber != null">
+                 SET
+                     phone_number = #{phoneNumber}
+             </if>
+             <if test="headPicUrl != '' and headPicUrl != null">
+                 SET
+                     head_pic_url = #{headPicUrl}
+             </if>
+         WHERE
+             id = #{id}
+    </update>
+
+    <select id="getUserById" parameterType="int" resultMap="userMap">
+        <![CDATA[
+            SELECT
+                id,
+                nick_name,
+                email,
+                head_pic_url,
+                phone_number
+            FROM
+                user
+            WHERE
+                id = #{value}
+        ]]>
+    </select>
 </mapper>
 

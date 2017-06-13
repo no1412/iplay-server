@@ -7,6 +7,7 @@ import com.lilei.iplay.exception.ParameterException;
 import com.lilei.iplay.exception.ServiceException;
 import com.lilei.iplay.model.Content;
 import com.lilei.iplay.model.ContentDescribeVo;
+import com.lilei.iplay.model.ContentVo;
 import com.lilei.iplay.service.ContentService;
 
 public class ContentServiceImpl implements ContentService {
@@ -34,6 +35,12 @@ public class ContentServiceImpl implements ContentService {
     public ContentDescribeVo getContentDetail(int contentId)
             throws ParameterException, ServiceException {
         return contentDao.getContentDetail(contentId);
+    }
+
+    @Override
+    public List<ContentDescribeVo> searchContentDescribes(ContentVo contentVo)
+            throws ParameterException, ServiceException {
+        return contentDao.searchContentDescribes(contentVo);
     }
 
 }

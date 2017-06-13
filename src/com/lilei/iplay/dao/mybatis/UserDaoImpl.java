@@ -16,6 +16,8 @@ public class UserDaoImpl extends SqlSessionDaoSupport implements UserDao {
     private static final String SQL_ID_FIND_USER_PHONE_NUMBER = ".findUserPhoneNumber";
     private static final String SQL_ID_SAVE_USER_INFOR = ".saveUserInfo";
     private static final String SQL_ID_GET_USER_BY_PHONE_NUMBER_password = ".getUserByPhoneNumerPassword";
+    private static final String SQL_ID_UPDATE_USER_INFORS = ".updateUserInfors";
+    private static final String SQL_ID_GET_USER_BY_ID = ".getUserById";
 
     @Override
     public List<String> findUserPhoneNumber() {
@@ -36,6 +38,16 @@ public class UserDaoImpl extends SqlSessionDaoSupport implements UserDao {
         params.put("phoneNumber", phoneNumber);
         params.put("password", password);
         return getSqlSession().selectOne(CLASS_NAME + SQL_ID_GET_USER_BY_PHONE_NUMBER_password, params);
+    }
+
+    @Override
+    public int updateUserInfors(User user) {
+        return getSqlSession().update(CLASS_NAME + SQL_ID_UPDATE_USER_INFORS, user);
+    }
+
+    @Override
+    public User getUserById(int id) {
+       return getSqlSession().selectOne(CLASS_NAME + SQL_ID_GET_USER_BY_ID, id);
     }
 
 }

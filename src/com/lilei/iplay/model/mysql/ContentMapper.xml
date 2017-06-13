@@ -45,6 +45,31 @@
             c.publish_time DESC
     </select>
 
+    <select id="searchContentDescribes" parameterType="com.lilei.iplay.model.ContentVo" resultMap="contentDescribeVoMap">
+        SELECT
+            c.id,
+            c.title,
+            c.surface,
+            c.content_detail,
+            c.publish_time,
+            c.user_id,
+            u.head_pic_url,
+            u.nick_name
+        FROM
+            content c, user u
+        WHERE
+            c.user_id = u.id
+
+            <if test="searchText != '' and searchText != null">
+                AND
+                    c.title
+                LIKE
+                    '%${searchText}%'
+            </if>
+        ORDER BY
+            c.publish_time DESC
+    </select>
+
     <insert id="saveContent" parameterType="com.lilei.iplay.model.Content" useGeneratedKeys="true" keyProperty="id">
         <![CDATA[
             INSERT
